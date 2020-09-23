@@ -33,4 +33,4 @@ TEST_COLUMN_7,
 TEST_COLUMN_8,
 TEST_COLUMN_9
 
-FROM DBT_VAULT.TEST.raw_source
+FROM `georgian-os`.`dbtvault_test`.`raw_source`

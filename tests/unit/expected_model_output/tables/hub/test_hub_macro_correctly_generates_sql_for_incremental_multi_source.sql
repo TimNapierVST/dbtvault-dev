@@ -7,7 +7,7 @@ WITH STG_1 AS (
             PARTITION BY CUSTOMER_PK
             ORDER BY LOADDATE ASC
         ) AS RN
-        FROM DBT_VAULT.TEST.raw_source
+        FROM `georgian-os`.`dbtvault_test`.`raw_source`
     ) AS a
     WHERE RN = 1
 ),
@@ -20,7 +20,7 @@ STG_2 AS (
             PARTITION BY CUSTOMER_PK
             ORDER BY LOADDATE ASC
         ) AS RN
-        FROM DBT_VAULT.TEST.raw_source_2
+        FROM `georgian-os`.`dbtvault_test`.`raw_source_2`
     ) AS a
     WHERE RN = 1
 ),
@@ -44,6 +44,6 @@ STG AS (
 )
 
 SELECT c.* FROM STG AS c
-LEFT JOIN DBT_VAULT.TEST.test_hub_macro_correctly_generates_sql_for_incremental_multi_source AS d 
+LEFT JOIN `georgian-os`.`dbtvault_test`.`test_hub_macro_correctly_generates_sql_for_incremental_multi_source` AS d 
 ON c.CUSTOMER_PK = d.CUSTOMER_PK
 WHERE d.CUSTOMER_PK IS NULL

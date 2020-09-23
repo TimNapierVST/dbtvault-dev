@@ -14,4 +14,4 @@ AS BINARY(16)) AS CUSTOMER_HASHDIFF
 
 
 
-FROM DBT_VAULT.TEST.raw_source
+FROM `georgian-os`.`dbtvault_test`.`raw_source`

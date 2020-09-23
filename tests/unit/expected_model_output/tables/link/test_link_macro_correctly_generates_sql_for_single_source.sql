@@ -7,7 +7,7 @@ WITH STG AS (
             PARTITION BY b.CUSTOMER_PK
             ORDER BY b.LOADDATE, b.RECORD_SOURCE ASC
         ) AS RN
-        FROM DBT_VAULT.TEST.raw_source AS b
+        FROM `georgian-os`.`dbtvault_test`.`raw_source` AS b
         WHERE b.ORDER_FK IS NOT NULL
         AND b.BOOKING_FK IS NOT NULL
     ) AS a

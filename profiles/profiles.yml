@@ -24,6 +24,7 @@ dbtvault:
       project: "{{ env_var('GCP_PROJECT_ID') }}"
       dataset: "{{ env_var('GCP_DATASET') }}"
       keyfile: "{{ env_var('GCP_KEYFILE_PATH') }}"
+      location: northamerica-northeast1
       
       threads: 1
       timeout_seconds: 300

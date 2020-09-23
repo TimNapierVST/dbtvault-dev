@@ -12,9 +12,9 @@ compare as (
     FULL OUTER JOIN expected_data AS b
     {%- for column in compare_columns -%}
     {%- if loop.first %}
-    ON (a.{{ column }}::VARCHAR = b.{{ column }}::VARCHAR
+    ON ({{dbt_utils.safe_cast('a.'~ column, dbt_utils.type_string()) }} = {{dbt_utils.safe_cast('b.'~ column, dbt_utils.type_string()) }}
     {%- else %}
-    AND a.{{ column }}::VARCHAR = b.{{ column }}::VARCHAR
+    AND {{dbt_utils.safe_cast('a.'~ column, dbt_utils.type_string()) }} = {{dbt_utils.safe_cast('b.'~ column, dbt_utils.type_string()) }}
     {{- ')' if loop.last -}}
     {%- endif -%}
     {%- endfor %}

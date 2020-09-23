@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: test_unit
-    database: DBT_VAULT
-    schema: TEST
+    database: georgian-os
+    schema: dbtvault_test
     tables:
       - name: source
         identifier: raw_source_table

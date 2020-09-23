@@ -316,7 +316,7 @@ class DBTTestUtils:
                 active_hash_func = active_hash_func[0]
                 raw_item = re.findall(patterns[active_hash_func]['pattern'], item)[0]
                 hash_func = patterns[active_hash_func]['function']
-                hashed_item = str(hash_func(raw_item.encode('utf-8')).hexdigest()).upper()
+                hashed_item = str(hash_func(raw_item.encode('utf-8')).hexdigest())
                 hashed_list.append(hashed_item)
             else:
                 hashed_list.append(item)

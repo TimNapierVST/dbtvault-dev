@@ -32,8 +32,8 @@ def sha(context):
 
             for c, t in config[k]['column_types'].items():
 
-                if t == 'BINARY(16)':
-                    config[k]['column_types'][c] = 'BINARY(32)'
+                if t == 'STRING':
+                    config[k]['column_types'][c] = 'STRING'
 
     else:
         raise ValueError('sha fixture used before vault structure fixture.')
@@ -63,18 +63,18 @@ def single_source_hub(context):
     context.seed_config = {
         'HUB': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'CUSTOMER_ID': 'VARCHAR',
+                'CUSTOMER_PK': 'STRING',
+                'CUSTOMER_ID': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -113,44 +113,44 @@ def multi_source_hub(context):
     context.seed_config = {
         'HUB': {
             'column_types': {
-                'PART_PK': 'BINARY(16)',
-                'PART_ID': 'VARCHAR',
+                'PART_PK': 'STRING',
+                'PART_ID': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_PARTS': {
             'column_types': {
-                'PART_ID': 'VARCHAR',
-                'PART_NAME': 'VARCHAR',
-                'PART_TYPE': 'VARCHAR',
-                'PART_SIZE': 'VARCHAR',
-                'PART_RETAILPRICE': 'NUMBER(38,2)',
+                'PART_ID': 'STRING',
+                'PART_NAME': 'STRING',
+                'PART_TYPE': 'STRING',
+                'PART_SIZE': 'STRING',
+                'PART_RETAILPRICE': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_SUPPLIER': {
             'column_types': {
-                'PART_ID': 'VARCHAR',
-                'SUPPLIER_ID': 'VARCHAR',
+                'PART_ID': 'STRING',
+                'SUPPLIER_ID': 'STRING',
                 'AVAILQTY': 'FLOAT',
-                'SUPPLYCOST': 'NUMBER(38,2)',
+                'SUPPLYCOST': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_LINEITEM': {
             'column_types': {
-                'ORDER_ID': 'VARCHAR',
-                'PART_ID': 'VARCHAR',
-                'SUPPLIER_ID': 'VARCHAR',
+                'ORDER_ID': 'STRING',
+                'PART_ID': 'STRING',
+                'SUPPLIER_ID': 'STRING',
                 'LINENUMBER': 'FLOAT',
                 'QUANTITY': 'FLOAT',
-                'EXTENDED_PRICE': 'NUMBER(38,2)',
-                'DISCOUNT': 'NUMBER(38,2)',
+                'EXTENDED_PRICE': 'NUMERIC',
+                'DISCOUNT': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -182,22 +182,22 @@ def single_source_link(context):
     context.seed_config = {
         'LINK': {
             'column_types': {
-                'CUSTOMER_NATION_PK': 'BINARY(16)',
-                'CUSTOMER_FK': 'BINARY(16)',
-                'NATION_FK': 'BINARY(16)',
+                'CUSTOMER_NATION_PK': 'STRING',
+                'CUSTOMER_FK': 'STRING',
+                'NATION_FK': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'NATION_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'NATION_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_PHONE': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -239,44 +239,44 @@ def multi_source_link(context):
     context.seed_config = {
         'LINK': {
             'column_types': {
-                'CUSTOMER_NATION_PK': 'BINARY(16)',
-                'CUSTOMER_FK': 'BINARY(16)',
-                'NATION_FK': 'BINARY(16)',
+                'CUSTOMER_NATION_PK': 'STRING',
+                'CUSTOMER_FK': 'STRING',
+                'NATION_FK': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_SAP': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'NATION_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'NATION_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_PHONE': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_CRM': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'NATION_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'NATION_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_PHONE': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_WEB': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'NATION_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'NATION_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_PHONE': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -316,24 +316,24 @@ def satellite(context):
     context.seed_config = {
         'RAW_STAGE': {
             'column_types': {
-                'CUSTOMER_ID': 'NUMBER(38, 0)',
-                'CUSTOMER_NAME': 'VARCHAR',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_ID': 'NUMERIC',
+                'CUSTOMER_NAME': 'STRING',
+                'CUSTOMER_PHONE': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'SATELLITE': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'CUSTOMER_NAME': 'VARCHAR',
-                'CUSTOMER_PHONE': 'VARCHAR',
+                'CUSTOMER_PK': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
+                'CUSTOMER_PHONE': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'HASHDIFF': 'BINARY(16)',
+                'HASHDIFF': 'STRING',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -384,23 +384,23 @@ def satellite_cycle(context):
     context.seed_config = {
         'RAW_STAGE': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'SATELLITE': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_PK': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
-                'HASHDIFF': 'BINARY(16)',
+                'HASHDIFF': 'STRING',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -440,26 +440,26 @@ def t_link(context):
     context.seed_config = {
         'RAW_STAGE': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'TRANSACTION_NUMBER': 'NUMBER(38,0)',
+                'CUSTOMER_ID': 'STRING',
+                'TRANSACTION_NUMBER': 'NUMERIC',
                 'TRANSACTION_DATE': 'DATE',
-                'TYPE': 'VARCHAR',
-                'AMOUNT': 'NUMBER(38,2)',
+                'TYPE': 'STRING',
+                'AMOUNT': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'T_LINK': {
             'column_types': {
-                'TRANSACTION_PK': 'BINARY(16)',
-                'CUSTOMER_FK': 'BINARY(16)',
-                'TRANSACTION_NUMBER': 'NUMBER(38,0)',
+                'TRANSACTION_PK': 'STRING',
+                'CUSTOMER_FK': 'STRING',
+                'TRANSACTION_NUMBER': 'NUMERIC',
                 'TRANSACTION_DATE': 'DATE',
-                'TYPE': 'VARCHAR',
-                'AMOUNT': 'NUMBER(38,2)',
+                'TYPE': 'STRING',
+                'AMOUNT': 'NUMERIC',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }
@@ -586,86 +586,86 @@ def cycle(context):
     context.seed_config = {
         'RAW_STAGE_CUSTOMER': {
             'column_types': {
-                'CUSTOMER_ID': 'VARCHAR',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_ID': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'RAW_STAGE_BOOKING': {
             'column_types': {
-                'BOOKING_ID': 'VARCHAR',
-                'CUSTOMER_ID': 'VARCHAR',
-                'PRICE': 'NUMBER(38,2)',
+                'BOOKING_ID': 'STRING',
+                'CUSTOMER_ID': 'STRING',
+                'PRICE': 'NUMERIC',
                 'DEPARTURE_DATE': 'DATE',
                 'BOOKING_DATE': 'DATE',
-                'PHONE': 'VARCHAR',
-                'DESTINATION': 'VARCHAR',
-                'NATIONALITY': 'VARCHAR',
+                'PHONE': 'STRING',
+                'DESTINATION': 'STRING',
+                'NATIONALITY': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'HUB_CUSTOMER': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'CUSTOMER_ID': 'NUMBER(38,0)',
+                'CUSTOMER_PK': 'STRING',
+                'CUSTOMER_ID': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'HUB_BOOKING': {
             'column_types': {
-                'BOOKING_PK': 'BINARY(16)',
-                'BOOKING_ID': 'NUMBER(38,0)',
+                'BOOKING_PK': 'STRING',
+                'BOOKING_ID': 'NUMERIC',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'LINK_CUSTOMER_BOOKING': {
             'column_types': {
-                'CUSTOMER_BOOKING_PK': 'BINARY(16)',
-                'CUSTOMER_PK': 'BINARY(16)',
-                'BOOKING_PK': 'BINARY(16)',
+                'CUSTOMER_BOOKING_PK': 'STRING',
+                'CUSTOMER_PK': 'STRING',
+                'BOOKING_PK': 'STRING',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'SAT_CUST_CUSTOMER_DETAILS': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'HASHDIFF': 'BINARY(16)',
-                'CUSTOMER_NAME': 'VARCHAR',
+                'CUSTOMER_PK': 'STRING',
+                'HASHDIFF': 'STRING',
+                'CUSTOMER_NAME': 'STRING',
                 'CUSTOMER_DOB': 'DATE',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'SAT_BOOK_CUSTOMER_DETAILS': {
             'column_types': {
-                'CUSTOMER_PK': 'BINARY(16)',
-                'HASHDIFF': 'BINARY(16)',
-                'PHONE': 'VARCHAR',
-                'NATIONALITY': 'VARCHAR',
+                'CUSTOMER_PK': 'STRING',
+                'HASHDIFF': 'STRING',
+                'PHONE': 'STRING',
+                'NATIONALITY': 'STRING',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         },
         'SAT_BOOK_BOOKING_DETAILS': {
             'column_types': {
-                'BOOKING_PK': 'BINARY(16)',
-                'HASHDIFF': 'BINARY(16)',
-                'PRICE': 'NUMBER(38,2)',
+                'BOOKING_PK': 'STRING',
+                'HASHDIFF': 'STRING',
+                'PRICE': 'NUMERIC',
                 'BOOKING_DATE': 'DATE',
                 'DEPARTURE_DATE': 'DATE',
-                'DESTINATION': 'VARCHAR',
+                'DESTINATION': 'STRING',
                 'EFFECTIVE_FROM': 'DATE',
                 'LOADDATE': 'DATE',
-                'SOURCE': 'VARCHAR'
+                'SOURCE': 'STRING'
             }
         }
     }

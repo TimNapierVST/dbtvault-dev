@@ -224,6 +224,7 @@ Feature: Hubs
       | md5('1004') | 1004        | 1993-01-01 | TPCH   |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [BASE-LOAD-UNION] Union three staging tables to feed a empty hub which doesn't yet exist.
     Given the HUB table does not exist
     And the RAW_STAGE_PARTS table contains data
@@ -266,6 +267,7 @@ Feature: Hubs
       | md5('1006') | 1006    | 1993-01-01 | *      |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [BASE-LOAD-UNION] Keys with NULL or empty values in the union of three staging tables are not feed into an empty hub which doesn't yet exist.
     Given the HUB table does not exist
     And the RAW_STAGE_PARTS table contains data
@@ -312,6 +314,7 @@ Feature: Hubs
       | md5('1006') | 1006    | 1993-01-01 | SUPP   |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [BASE-LOAD-UNION] Union three staging tables to feed an empty hub.
     Given the HUB hub is empty
     And the RAW_STAGE_PARTS table contains data
@@ -354,6 +357,7 @@ Feature: Hubs
       | md5('1006') | 1006    | 1993-01-01 | SUPP   |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [POPULATED-LOAD-UNION] Union three staging tables to feed an empty hub over two cycles.
     Given the HUB hub is already populated with data
       | PART_PK     | PART_ID | LOADDATE   | SOURCE |
@@ -427,6 +431,7 @@ Feature: Hubs
       | md5('1009') | 1009    | 1993-01-03 | *      |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [POPULATED-LOAD-UNION] Union three staging tables to feed a populated hub.
     Given the HUB hub is already populated with data
       | PART_PK     | PART_ID | LOADDATE   | SOURCE |
@@ -472,6 +477,7 @@ Feature: Hubs
       | md5('1006') | 1006    | 1993-01-02 | SUPP   |
 
   @fixture.multi_source_hub
+  @bqfail
   Scenario: [POPULATED-LOAD-UNION] Keys with a NULL or empty value in a union of three staging tables are not fed into a populated hub.
     Given the HUB hub is already populated with data
       | PART_PK     | PART_ID | LOADDATE   | SOURCE |
