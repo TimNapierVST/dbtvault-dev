@@ -1,0 +1,51 @@
+name: eagle
+
+profile: eagle
+version: '6.0'
+config-version: 1
+
+analysis-paths:
+  - analysis
+clean-targets:
+  - target
+data-paths:
+  - data
+macro-paths:
+  - macros
+source-paths:
+  - models
+test-paths:
+  - tests
+target-path: target
+
+models:
+  eagle:
+ 
+    business_vault:
+      schema: BUSINESS_VAULT
+      # schema:
+      tags:
+        - 'vault'
+      materialized: table
+      hubs:
+ 
+      pits:
+        materialized: incremental
+        tags:
+          - pit
+        pit_person:
+          vars:
+            satellites:
+              - 's_person'
+              - 's_person_employment'
+              - 's_person_tags'           
+            src_hashdiff: 'HASHDIFF'
+            src_pk: 'H_PERSON_SID'
+            src_ldts: 'LOAD_DATE_TIME'
+            src_source: 'RECORD_SOURCE'
+            src_eff: 'EFFECTIVE_FROM'
+            src_db: 'DV_BUSINESS_VAULT'
+
+
+  vars:
+    hash: 'MD5'
